@@ -1,0 +1,13 @@
+.starter {
+  padding: 20px; }
+  .starter td:first-child {
+    min-width: 300px; }
+  .starter td {
+    padding-left: 6px; }
+  .starter label {
+    min-width: 200px; }
+  .starter input {
+    padding: 5px; }
+
+
+/*# sourceMappingURL=theme-825ceaf2.css.map*/
