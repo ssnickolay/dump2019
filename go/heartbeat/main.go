@@ -20,7 +20,9 @@ func Handler(ctx context.Context) (Response, error) {
 	var buf bytes.Buffer
 
 	body, err := json.Marshal(map[string]interface{}{
-		"message": "Go Serverless v1.0! Your function executed successfully!",
+		"success": true,
+		"action":  "show",
+		"lang":    "go",
 	})
 	if err != nil {
 		return Response{StatusCode: 404}, err
@@ -33,7 +35,7 @@ func Handler(ctx context.Context) (Response, error) {
 		Body:            buf.String(),
 		Headers: map[string]string{
 			"Content-Type":           "application/json",
-			"X-MyCompany-Func-Reply": "hello-handler",
+			"X-MyCompany-Func-Reply": "heartbeat-handler",
 		},
 	}
 
