@@ -15,6 +15,8 @@ import (
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
 type Response events.APIGatewayProxyResponse
 
+var Fib uint
+
 func Fibonacci(n uint) uint {
 	if n <= 1 {
 		return n
@@ -24,13 +26,14 @@ func Fibonacci(n uint) uint {
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
 func Handler(ctx context.Context) (Response, error) {
-	Fibonacci(42) // make some f*cking noise
+	// Fib := Fibonacci(33) // make some f*cking noise
 	var buf bytes.Buffer
 
 	body, err := json.Marshal(map[string]interface{}{
 		"success": true,
 		"action":  "show",
 		"lang":    "go",
+		"Fib":     Fib,
 	})
 	if err != nil {
 		return Response{StatusCode: 404}, err
@@ -48,6 +51,10 @@ func Handler(ctx context.Context) (Response, error) {
 	}
 
 	return resp, nil
+}
+
+func init() {
+	Fib = Fibonacci(33)
 }
 
 func main() {
